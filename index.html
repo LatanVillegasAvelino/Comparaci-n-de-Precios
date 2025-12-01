@@ -1,1 +1,873 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparador de Precios Perú - LATAN VILLEGAS AVELINO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SEO BÁSICO -->
+    <meta name="description" content="Comparador de precios en Perú. Encuentra las mejores ofertas en miles de tiendas: tecnología, teléfonos, electrodomésticos, alimentos y más. Ahorra comparando precios en todo el país.">
+    <meta name="keywords" content="comparador de precios, ofertas Perú, precios Perú, tiendas Perú, tecnología barata, supermercado precios, comparar productos, LATAN VILLEGAS AVELINO">
+    <meta name="author" content="LATAN VILLEGAS AVELINO">
+    <meta name="robots" content="index, follow">
+
+    <!-- SEO MÓVIL -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- GEO-TARGETING -->
+    <meta name="geo.region" content="PE">
+    <meta name="geo.placename" content="Perú">
+    <meta name="geo.position" content="-9.189967;-74.789915">
+    <meta name="ICBM" content="-9.189967, -74.789915">
+    <meta http-equiv="content-language" content="es-PE">
+
+    <!-- OPEN GRAPH (FACEBOOK, WHATSAPP) -->
+    <meta property="og:title" content="Comparador de Precios Perú - LATAN VILLEGAS AVELINO">
+    <meta property="og:description" content="Encuentra los mejores precios en miles de tiendas en Perú. Compara y ahorra con datos actualizados.">
+    <meta property="og:image" content="https://TU_USUARIO.github.io/comparador-precios/preview.png">
+    <meta property="og:url" content="https://TU_USUARIO.github.io/comparador-precios/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PE">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Comparador de Precios Perú - LATAN VILLEGAS AVELINO">
+    <meta name="twitter:description" content="Compara precios de miles de tiendas en Perú. Encuentra las mejores ofertas.">
+    <meta name="twitter:image" content="https://TU_USUARIO.github.io/comparador-precios/preview.png">
+
+    <!-- SCHEMA.ORG - DATOS ESTRUCTURADOS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Comparador de precios Perú - LATAN VILLEGAS AVELINO",
+      "url": "https://TU_USUARIO.github.io/comparador-precios/",
+      "description": "Comparador de precios en Perú con miles de productos y tiendas. Encuentra las mejores ofertas por región.",
+      "inLanguage": "es-PE",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://TU_USUARIO.github.io/comparador-precios/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- MANIFEST PWA -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- FAVICON (opcional, puedes cambiarlo luego) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23667eea'/%3E%3Ctext x='50' y='55' font-size='50' text-anchor='middle' fill='white'%3EP%3C/text%3E%3C/svg%3E">
+
+    <!-- ESTILOS PERSONALIZADOS -->
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+        
+        .region-tab {
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+        }
+        
+        .region-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .region-tabs-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .region-tabs-wrapper {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 0.5rem;
+            }
+        }
+
+        .result-card {
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            padding: 1rem;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .result-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .result-category {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .result-price-main {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #16a34a;
+        }
+
+        .result-price-range {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .result-meta {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .result-btn-primary,
+        .result-btn-secondary {
+            flex: 1;
+            text-align: center;
+            padding: 0.5rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .result-btn-primary {
+            background-color: #4f46e5;
+            color: #ffffff;
+        }
+
+        .result-btn-primary:hover {
+            background-color: #4338ca;
+        }
+
+        .result-btn-secondary {
+            background-color: #e5e7eb;
+            color: #111827;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+<header class="bg-white shadow-sm">
+    <div class="page-container px-4 py-3 flex items-center justify-between">
+        <div class="font-semibold tracking-wide text-sm md:text-base text-purple-700">
+            LATAN VILLEGAS AVELINO
+        </div>
+        <nav class="hidden md:flex gap-4 text-sm text-gray-600">
+            <a href="#inicio" class="hover:text-purple-600">Inicio</a>
+            <a href="#search-results" class="hover:text-purple-600">Resultados</a>
+            <a href="#tiendas" class="hover:text-purple-600">Tiendas</a>
+            <a href="#regiones" class="hover:text-purple-600">Regiones</a>
+            <a href="#contacto" class="hover:text-purple-600">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<main class="page-container">
+    <!-- Hero Section -->
+    <section id="inicio" class="gradient-bg text-white py-16 md:py-20 rounded-b-3xl mb-6">
+        <div class="mx-auto px-4 text-center">
+            <h1 id="hero-title" class="text-4xl md:text-5xl font-bold mb-4">
+                Compara precios en todo el Perú
+            </h1>
+            <p id="hero-subtitle" class="text-base md:text-lg mb-8 text-purple-100">
+                Miles de tiendas, mejores precios, todas las regiones
+            </p>
+            
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-full p-1.5 shadow-lg">
+                    <div class="flex">
+                        <input 
+                            type="text" 
+                            id="search-input"
+                            placeholder="¿Qué producto buscas?"
+                            class="flex-1 px-4 md:px-6 py-3 md:py-4 text-gray-700 rounded-l-full focus:outline-none text-base"
+                        >
+                        <button 
+                            id="search-button"
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-r-full transition-colors font-semibold text-sm md:text-base"
+                        >
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-semibold pulse-animation">4,200+</div>
+                    <div class="text-purple-200 text-sm md:text-base">Tiendas registradas (demo)</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-semibold pulse-animation">25</div>
+                    <div class="text-purple-200 text-sm md:text-base">Regiones del Perú</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-semibold pulse-animation">1.2M+</div>
+                    <div class="text-purple-200 text-sm md:text-base">Productos comparados (demo)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados de Búsqueda -->
+    <section id="search-results" class="py-12 md:py-16 bg-white hidden">
+        <div class="mx-auto px-4">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl md:text-3xl font-semibold text-gray-800">
+                    Resultados de búsqueda
+                </h2>
+                <p id="results-count" class="text-sm text-gray-500"></p>
+            </div>
+            <div id="results-container" class="space-y-4 md:space-y-6">
+                <!-- Los resultados se dibujan aquí por JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Tiendas Destacadas -->
+    <section id="tiendas" class="py-12 md:py-16 bg-gray-100 rounded-3xl my-4">
+        <div class="mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-10 text-gray-800">
+                Tiendas destacadas
+            </h2>
+            
+            <div class="store-grid">
+                <!-- Todas comparten el mismo color de avatar -->
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover text-center">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg md:text-xl">S</span>
+                    </div>
+                    <h3 class="font-semibold text-base md:text-lg mb-1">Saga Falabella</h3>
+                    <p class="text-gray-600 text-xs md:text-sm">Departamental</p>
+                    <div class="mt-3">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">
+                            Verificada
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover text-center">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg md:text-xl">R</span>
+                    </div>
+                    <h3 class="font-semibold text-base md:text-lg mb-1">Ripley</h3>
+                    <p class="text-gray-600 text-xs md:text-sm">Departamental</p>
+                    <div class="mt-3">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">
+                            Verificada
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover text-center">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg md:text-xl">P</span>
+                    </div>
+                    <h3 class="font-semibold text-base md:text-lg mb-1">Plaza Vea</h3>
+                    <p class="text-gray-600 text-xs md:text-sm">Supermercado</p>
+                    <div class="mt-3">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">
+                            Verificada
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover text-center">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg md:text-xl">T</span>
+                    </div>
+                    <h3 class="font-semibold text-base md:text-lg mb-1">Tottus</h3>
+                    <p class="text-gray-600 text-xs md:text-sm">Supermercado</p>
+                    <div class="mt-3">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">
+                            Verificada
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover text-center">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg md:text-xl">M</span>
+                    </div>
+                    <h3 class="font-semibold text-base md:text-lg mb-1">Metro</h3>
+                    <p class="text-gray-600 text-xs md:text-sm">Supermercado</p>
+                    <div class="mt-3">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">
+                            Verificada
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg card-hover text-center">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg md:text-xl">O</span>
+                    </div>
+                    <h3 class="font-semibold text-base md:text-lg mb-1">Oechsle</h3>
+                    <p class="text-gray-600 text-xs md:text-sm">Departamental</p>
+                    <div class="mt-3">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">
+                            Verificada
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button 
+                    onclick="showAllStores()"
+                    class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 md:py-4 rounded-full font-semibold text-sm md:text-base transition-colors"
+                >
+                    Ver todas las tiendas (demo)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regiones Section -->
+    <section id="regiones" class="py-12 md:py-16 bg-white">
+        <div class="mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8 text-gray-800">
+                Explora por regiones
+            </h2>
+            
+            <div class="region-tabs-wrapper mb-6">
+                <button onclick="showRegion('lima')" class="region-tab active px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Lima
+                </button>
+                <button onclick="showRegion('arequipa')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Arequipa
+                </button>
+                <button onclick="showRegion('cusco')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Cusco
+                </button>
+                <button onclick="showRegion('trujillo')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    La Libertad
+                </button>
+                <button onclick="showRegion('piura')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Piura
+                </button>
+                <button onclick="showRegion('loreto')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Loreto
+                </button>
+                <button onclick="showRegion('lambayeque')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Lambayeque
+                </button>
+                <button onclick="showRegion('cajamarca')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Cajamarca
+                </button>
+                <button onclick="showRegion('junin')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Junín
+                </button>
+                <button onclick="showRegion('ancash')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Áncash
+                </button>
+                <button onclick="showRegion('huanuco')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Huánuco
+                </button>
+                <button onclick="showRegion('san_martin')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    San Martín
+                </button>
+                <button onclick="showRegion('ica')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Ica
+                </button>
+                <button onclick="showRegion('ayacucho')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Ayacucho
+                </button>
+                <button onclick="showRegion('ucayali')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Ucayali
+                </button>
+                <button onclick="showRegion('huancavelica')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Huancavelica
+                </button>
+                <button onclick="showRegion('apurimac')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Apurímac
+                </button>
+                <button onclick="showRegion('tacna')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Tacna
+                </button>
+                <button onclick="showRegion('pasco')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Pasco
+                </button>
+                <button onclick="showRegion('tumbes')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Tumbes
+                </button>
+                <button onclick="showRegion('amazonas')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Amazonas
+                </button>
+                <button onclick="showRegion('moquegua')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Moquegua
+                </button>
+                <button onclick="showRegion('puno')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Puno
+                </button>
+                <button onclick="showRegion('madre_de_dios')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Madre de Dios
+                </button>
+                <button onclick="showRegion('callao')" class="region-tab px-3 py-1.5 rounded-full border border-purple-600 font-semibold">
+                    Callao
+                </button>
+            </div>
+
+            <div id="region-content" class="bg-gray-50 rounded-lg p-6 md:p-8">
+                <!-- Contenido de región rellenado por JS -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer id="contacto" class="bg-gray-900 text-white py-10 md:py-12 mt-8">
+    <div class="page-container px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-lg md:text-xl font-semibold mb-3">
+                    LATAN VILLEGAS AVELINO
+                </h3>
+                <p class="text-purple-200 text-sm">
+                    Comparador de precios en Perú. Encuentra ofertas en múltiples tiendas en un solo lugar.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-lg md:text-xl font-semibold mb-3">Regiones</h3>
+                <ul class="space-y-1 text-purple-200 text-xs md:text-sm">
+                    <li>Lima • Arequipa • Cusco</li>
+                    <li>La Libertad • Piura • Loreto</li>
+                    <li>Lambayeque • Cajamarca • Junín</li>
+                    <li>Áncash • Huánuco • San Martín</li>
+                    <li>Ica • Ayacucho • Ucayali</li>
+                    <li>Huancavelica • Apurímac • Tacna</li>
+                    <li>Pasco • Tumbes • Amazonas</li>
+                    <li>Moquegua • Puno • Madre de Dios</li>
+                    <li>Callao</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg md:text-xl font-semibold mb-3">Contacto</h3>
+                <div class="space-y-1 text-purple-200 text-sm">
+                    <p>📧 info@latanvillegasavelino.com</p>
+                    <p>📱 +51 999 888 777</p>
+                    <p>📍 Lima, Perú</p>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-purple-500 mt-8 pt-6 text-center text-purple-200 text-xs md:text-sm">
+            <p>&copy; 2025 LATAN VILLEGAS AVELINO. Todos los derechos reservados.</p>
+            <p class="mt-1 opacity-70 text-[11px]">
+                Datos y cifras mostradas solo con fines demostrativos.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Configuración por defecto
+    const defaultConfig = {
+        site_title: "LATAN VILLEGAS AVELINO",
+        hero_title: "Compara precios en todo el Perú",
+        hero_subtitle: "Miles de tiendas, mejores precios, todas las regiones",
+        search_placeholder: "¿Qué producto buscas?"
+    };
+
+    // Datos de ejemplo para búsqueda
+    const demoProducts = [
+        {
+            id: 1,
+            name: 'Laptop gamer 15" Ryzen 7 16GB RAM 512GB SSD',
+            category: 'Tecnología',
+            minPrice: 3299,
+            maxPrice: 3999,
+            storesCount: 4,
+            urlBestStore: '#',
+            urlAllStores: '#'
+        },
+        {
+            id: 2,
+            name: 'Smart TV 55" 4K UHD',
+            category: 'Electrohogar',
+            minPrice: 1499,
+            maxPrice: 1899,
+            storesCount: 5,
+            urlBestStore: '#',
+            urlAllStores: '#'
+        },
+        {
+            id: 3,
+            name: 'Smartphone 5G 128GB',
+            category: 'Telefonía',
+            minPrice: 899,
+            maxPrice: 1299,
+            storesCount: 6,
+            urlBestStore: '#',
+            urlAllStores: '#'
+        }
+    ];
+
+    // Datos de ejemplo para regiones del Perú
+    const regionData = {
+        lima: {
+            name: "Lima Metropolitana",
+            stores: 1250,
+            products: "350K",
+            districts: 43,
+            savings: "25%"
+        },
+        arequipa: {
+            name: "Arequipa",
+            stores: 320,
+            products: "85K",
+            districts: 29,
+            savings: "22%"
+        },
+        cusco: {
+            name: "Cusco",
+            stores: 280,
+            products: "75K",
+            districts: 13,
+            savings: "20%"
+        },
+        trujillo: {
+            name: "La Libertad (Trujillo)",
+            stores: 250,
+            products: "68K",
+            districts: 12,
+            savings: "23%"
+        },
+        piura: {
+            name: "Piura",
+            stores: 180,
+            products: "45K",
+            districts: 8,
+            savings: "21%"
+        },
+        loreto: {
+            name: "Loreto (Iquitos)",
+            stores: 120,
+            products: "32K",
+            districts: 7,
+            savings: "18%"
+        },
+        lambayeque: {
+            name: "Lambayeque (Chiclayo)",
+            stores: 165,
+            products: "42K",
+            districts: 3,
+            savings: "19%"
+        },
+        cajamarca: {
+            name: "Cajamarca",
+            stores: 95,
+            products: "28K",
+            districts: 13,
+            savings: "17%"
+        },
+        junin: {
+            name: "Junín (Huancayo)",
+            stores: 140,
+            products: "38K",
+            districts: 9,
+            savings: "20%"
+        },
+        ancash: {
+            name: "Áncash (Huaraz)",
+            stores: 85,
+            products: "24K",
+            districts: 20,
+            savings: "16%"
+        },
+        huanuco: {
+            name: "Huánuco",
+            stores: 75,
+            products: "22K",
+            districts: 11,
+            savings: "15%"
+        },
+        san_martin: {
+            name: "San Martín (Moyobamba)",
+            stores: 90,
+            products: "26K",
+            districts: 10,
+            savings: "18%"
+        },
+        ica: {
+            name: "Ica",
+            stores: 110,
+            products: "30K",
+            districts: 5,
+            savings: "19%"
+        },
+        ayacucho: {
+            name: "Ayacucho",
+            stores: 65,
+            products: "18K",
+            districts: 11,
+            savings: "14%"
+        },
+        ucayali: {
+            name: "Ucayali (Pucallpa)",
+            stores: 80,
+            products: "23K",
+            districts: 4,
+            savings: "16%"
+        },
+        huancavelica: {
+            name: "Huancavelica",
+            stores: 45,
+            products: "12K",
+            districts: 7,
+            savings: "13%"
+        },
+        apurimac: {
+            name: "Apurímac (Abancay)",
+            stores: 50,
+            products: "14K",
+            districts: 7,
+            savings: "14%"
+        },
+        tacna: {
+            name: "Tacna",
+            stores: 95,
+            products: "25K",
+            districts: 4,
+            savings: "18%"
+        },
+        pasco: {
+            name: "Pasco (Cerro de Pasco)",
+            stores: 40,
+            products: "11K",
+            districts: 3,
+            savings: "12%"
+        },
+        tumbes: {
+            name: "Tumbes",
+            stores: 55,
+            products: "15K",
+            districts: 3,
+            savings: "15%"
+        },
+        amazonas: {
+            name: "Amazonas (Chachapoyas)",
+            stores: 35,
+            products: "9K",
+            districts: 7,
+            savings: "11%"
+        },
+        moquegua: {
+            name: "Moquegua",
+            stores: 60,
+            products: "16K",
+            districts: 3,
+            savings: "16%"
+        },
+        puno: {
+            name: "Puno",
+            stores: 105,
+            products: "29K",
+            districts: 15,
+            savings: "17%"
+        },
+        madre_de_dios: {
+            name: "Madre de Dios (Puerto Maldonado)",
+            stores: 30,
+            products: "8K",
+            districts: 3,
+            savings: "11%"
+        },
+        callao: {
+            name: "Callao",
+            stores: 150,
+            products: "40K",
+            districts: 5,
+            savings: "21%"
+        }
+    };
+
+    const searchInput = document.getElementById("search-input");
+    const searchButton = document.getElementById("search-button");
+    const searchResultsSection = document.getElementById("search-results");
+    const resultsContainer = document.getElementById("results-container");
+    const resultsCount = document.getElementById("results-count");
+    const regionContent = document.getElementById("region-content");
+    const regionTabs = document.querySelectorAll(".region-tab");
+
+    function formatCurrency(value) {
+        return "S/ " + value.toLocaleString("es-PE");
+    }
+
+    function renderSearchResults(products) {
+        resultsContainer.innerHTML = "";
+
+        if (!products.length) {
+            resultsContainer.innerHTML = `
+                <div class="text-sm text-gray-500">
+                    No se encontraron resultados para tu búsqueda. Prueba con otro término.
+                </div>
+            `;
+            resultsCount.textContent = "0 resultados";
+            return;
+        }
+
+        products.forEach(p => {
+            const card = document.createElement("article");
+            card.className = "result-card";
+
+            card.innerHTML = `
+                <div class="result-header">
+                    <div>
+                        <div class="result-title">${p.name}</div>
+                        <div class="result-category">${p.category}</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="result-price-main">${formatCurrency(p.minPrice)}</div>
+                        <div class="result-price-range">
+                            Otros precios hasta ${formatCurrency(p.maxPrice)}
+                        </div>
+                    </div>
+                </div>
+                <div class="result-meta">
+                    Comparando precios en ${p.storesCount} tiendas (datos de ejemplo).
+                </div>
+                <div class="result-actions">
+                    <a href="${p.urlBestStore}" class="result-btn-primary">
+                        Ver mejor precio
+                    </a>
+                    <a href="${p.urlAllStores}" class="result-btn-secondary">
+                        Ver todas las tiendas
+                    </a>
+                </div>
+            `;
+
+            resultsContainer.appendChild(card);
+        });
+
+        resultsCount.textContent = `${products.length} resultado(s)`;
+    }
+
+    function searchProducts() {
+        const term = searchInput.value.trim().toLowerCase();
+        let filtered;
+
+        if (!term) {
+            filtered = demoProducts;
+        } else {
+            filtered = demoProducts.filter(p =>
+                p.name.toLowerCase().includes(term) ||
+                p.category.toLowerCase().includes(term)
+            );
+        }
+
+        renderSearchResults(filtered);
+        searchResultsSection.classList.remove("hidden");
+        searchResultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function showRegion(key) {
+        const data = regionData[key];
+        if (!data) return;
+
+        regionTabs.forEach(tab => tab.classList.remove("active"));
+        const activeTab = Array.from(regionTabs).find(tab =>
+            tab.getAttribute("onclick") && tab.getAttribute("onclick").includes(key)
+        );
+        if (activeTab) activeTab.classList.add("active");
+
+        regionContent.innerHTML = `
+            <h3 class="text-xl md:text-2xl font-semibold mb-6 text-purple-700">
+                ${data.name}
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+                <div class="bg-white p-4 rounded-lg shadow card-hover">
+                    <div class="text-xl md:text-2xl font-semibold text-purple-700">${data.stores}</div>
+                    <div class="text-gray-600 text-sm">Tiendas en la región</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow card-hover">
+                    <div class="text-xl md:text-2xl font-semibold text-purple-700">${data.products}</div>
+                    <div class="text-gray-600 text-sm">Productos registrados</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow card-hover">
+                    <div class="text-xl md:text-2xl font-semibold text-purple-700">${data.districts}</div>
+                    <div class="text-gray-600 text-sm">Provincias / distritos</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow card-hover">
+                    <div class="text-xl md:text-2xl font-semibold text-purple-700">${data.savings}</div>
+                    <div class="text-gray-600 text-sm">Ahorro promedio estimado</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function showAllStores() {
+        alert("Aquí más adelante puedes mostrar un listado completo de tiendas o un buscador de tiendas. Por ahora es solo demo.");
+    }
+
+    // Eventos
+    searchButton.addEventListener("click", searchProducts);
+    searchInput.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") searchProducts();
+    });
+
+    // Estado inicial
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("hero-title").textContent = defaultConfig.hero_title;
+        document.getElementById("hero-subtitle").textContent = defaultConfig.hero_subtitle;
+        searchInput.placeholder = defaultConfig.search_placeholder;
+        showRegion("lima");
+    });
+</script>
+
+</body>
+</html>
