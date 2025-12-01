@@ -1,9 +1,9 @@
 {
   "name": "Comparador de Precios Perú - LATAN VILLEGAS AVELINO",
-  "short_name": "Comparar Precios",
+  "short_name": "Compara Precios",
   "lang": "es-PE",
-  "start_url": "/comparador-precios/",
-  "scope": "/comparador-precios/",
+  "start_url": "/Compara-Precios-/",
+  "scope": "/Compara-Precios-/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#667eea",
