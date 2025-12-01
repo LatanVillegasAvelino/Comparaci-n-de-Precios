@@ -1,1 +1,23 @@
-
+{
+  "name": "Comparador de Precios Perú - LATAN VILLEGAS AVELINO",
+  "short_name": "Comparar Precios",
+  "lang": "es-PE",
+  "start_url": "/comparador-precios/",
+  "scope": "/comparador-precios/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "description": "Compara precios de miles de tiendas en Perú. Encuentra las mejores ofertas por región y categoría.",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
