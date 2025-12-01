@@ -29,8 +29,8 @@
     <!-- OPEN GRAPH (FACEBOOK, WHATSAPP) -->
     <meta property="og:title" content="Comparador de Precios Perú - LATAN VILLEGAS AVELINO">
     <meta property="og:description" content="Encuentra los mejores precios en miles de tiendas en Perú. Compara y ahorra con datos actualizados.">
-    <meta property="og:image" content="https://TU_USUARIO.github.io/comparador-precios/preview.png">
-    <meta property="og:url" content="https://TU_USUARIO.github.io/comparador-precios/">
+    <meta property="og:image" content="https://LatanVillegasAvelino.github.io/Compara-Precios-/preview.png">
+    <meta property="og:url" content="https://LatanVillegasAvelino.github.io/Compara-Precios-/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_PE">
 
@@ -38,7 +38,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Comparador de Precios Perú - LATAN VILLEGAS AVELINO">
     <meta name="twitter:description" content="Compara precios de miles de tiendas en Perú. Encuentra las mejores ofertas.">
-    <meta name="twitter:image" content="https://TU_USUARIO.github.io/comparador-precios/preview.png">
+    <meta name="twitter:image" content="https://LatanVillegasAvelino.github.io/Compara-Precios-/preview.png">
 
     <!-- SCHEMA.ORG - DATOS ESTRUCTURADOS -->
     <script type="application/ld+json">
@@ -46,12 +46,12 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Comparador de precios Perú - LATAN VILLEGAS AVELINO",
-      "url": "https://TU_USUARIO.github.io/comparador-precios/",
+      "url": "https://LatanVillegasAvelino.github.io/Compara-Precios-/",
       "description": "Comparador de precios en Perú con miles de productos y tiendas. Encuentra las mejores ofertas por región.",
       "inLanguage": "es-PE",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://TU_USUARIO.github.io/comparador-precios/?q={search_term_string}",
+        "target": "https://LatanVillegasAvelino.github.io/Compara-Precios-/?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -60,7 +60,7 @@
     <!-- MANIFEST PWA -->
     <link rel="manifest" href="manifest.json">
 
-    <!-- FAVICON (opcional, puedes cambiarlo luego) -->
+    <!-- FAVICON SIMPLE (puedes cambiarlo luego) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23667eea'/%3E%3Ctext x='50' y='55' font-size='50' text-anchor='middle' fill='white'%3EP%3C/text%3E%3C/svg%3E">
 
     <!-- ESTILOS PERSONALIZADOS -->
@@ -288,7 +288,6 @@
             </h2>
             
             <div class="store-grid">
-                <!-- Todas comparten el mismo color de avatar -->
                 <div class="bg-white p-6 rounded-lg shadow-lg card-hover text-center">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
                         <span class="text-white font-bold text-lg md:text-xl">S</span>
@@ -515,7 +514,6 @@
 </footer>
 
 <script>
-    // Configuración por defecto
     const defaultConfig = {
         site_title: "LATAN VILLEGAS AVELINO",
         hero_title: "Compara precios en todo el Perú",
@@ -523,11 +521,10 @@
         search_placeholder: "¿Qué producto buscas?"
     };
 
-    // Datos de ejemplo para búsqueda
     const demoProducts = [
         {
             id: 1,
-            name: 'Laptop gamer 15" Ryzen 7 16GB RAM 512GB SSD',
+            name: 'Laptop gamer 15\" Ryzen 7 16GB RAM 512GB SSD',
             category: 'Tecnología',
             minPrice: 3299,
             maxPrice: 3999,
@@ -537,7 +534,7 @@
         },
         {
             id: 2,
-            name: 'Smart TV 55" 4K UHD',
+            name: 'Smart TV 55\" 4K UHD',
             category: 'Electrohogar',
             minPrice: 1499,
             maxPrice: 1899,
@@ -557,183 +554,32 @@
         }
     ];
 
-    // Datos de ejemplo para regiones del Perú
     const regionData = {
-        lima: {
-            name: "Lima Metropolitana",
-            stores: 1250,
-            products: "350K",
-            districts: 43,
-            savings: "25%"
-        },
-        arequipa: {
-            name: "Arequipa",
-            stores: 320,
-            products: "85K",
-            districts: 29,
-            savings: "22%"
-        },
-        cusco: {
-            name: "Cusco",
-            stores: 280,
-            products: "75K",
-            districts: 13,
-            savings: "20%"
-        },
-        trujillo: {
-            name: "La Libertad (Trujillo)",
-            stores: 250,
-            products: "68K",
-            districts: 12,
-            savings: "23%"
-        },
-        piura: {
-            name: "Piura",
-            stores: 180,
-            products: "45K",
-            districts: 8,
-            savings: "21%"
-        },
-        loreto: {
-            name: "Loreto (Iquitos)",
-            stores: 120,
-            products: "32K",
-            districts: 7,
-            savings: "18%"
-        },
-        lambayeque: {
-            name: "Lambayeque (Chiclayo)",
-            stores: 165,
-            products: "42K",
-            districts: 3,
-            savings: "19%"
-        },
-        cajamarca: {
-            name: "Cajamarca",
-            stores: 95,
-            products: "28K",
-            districts: 13,
-            savings: "17%"
-        },
-        junin: {
-            name: "Junín (Huancayo)",
-            stores: 140,
-            products: "38K",
-            districts: 9,
-            savings: "20%"
-        },
-        ancash: {
-            name: "Áncash (Huaraz)",
-            stores: 85,
-            products: "24K",
-            districts: 20,
-            savings: "16%"
-        },
-        huanuco: {
-            name: "Huánuco",
-            stores: 75,
-            products: "22K",
-            districts: 11,
-            savings: "15%"
-        },
-        san_martin: {
-            name: "San Martín (Moyobamba)",
-            stores: 90,
-            products: "26K",
-            districts: 10,
-            savings: "18%"
-        },
-        ica: {
-            name: "Ica",
-            stores: 110,
-            products: "30K",
-            districts: 5,
-            savings: "19%"
-        },
-        ayacucho: {
-            name: "Ayacucho",
-            stores: 65,
-            products: "18K",
-            districts: 11,
-            savings: "14%"
-        },
-        ucayali: {
-            name: "Ucayali (Pucallpa)",
-            stores: 80,
-            products: "23K",
-            districts: 4,
-            savings: "16%"
-        },
-        huancavelica: {
-            name: "Huancavelica",
-            stores: 45,
-            products: "12K",
-            districts: 7,
-            savings: "13%"
-        },
-        apurimac: {
-            name: "Apurímac (Abancay)",
-            stores: 50,
-            products: "14K",
-            districts: 7,
-            savings: "14%"
-        },
-        tacna: {
-            name: "Tacna",
-            stores: 95,
-            products: "25K",
-            districts: 4,
-            savings: "18%"
-        },
-        pasco: {
-            name: "Pasco (Cerro de Pasco)",
-            stores: 40,
-            products: "11K",
-            districts: 3,
-            savings: "12%"
-        },
-        tumbes: {
-            name: "Tumbes",
-            stores: 55,
-            products: "15K",
-            districts: 3,
-            savings: "15%"
-        },
-        amazonas: {
-            name: "Amazonas (Chachapoyas)",
-            stores: 35,
-            products: "9K",
-            districts: 7,
-            savings: "11%"
-        },
-        moquegua: {
-            name: "Moquegua",
-            stores: 60,
-            products: "16K",
-            districts: 3,
-            savings: "16%"
-        },
-        puno: {
-            name: "Puno",
-            stores: 105,
-            products: "29K",
-            districts: 15,
-            savings: "17%"
-        },
-        madre_de_dios: {
-            name: "Madre de Dios (Puerto Maldonado)",
-            stores: 30,
-            products: "8K",
-            districts: 3,
-            savings: "11%"
-        },
-        callao: {
-            name: "Callao",
-            stores: 150,
-            products: "40K",
-            districts: 5,
-            savings: "21%"
-        }
+        lima: { name: "Lima Metropolitana", stores: 1250, products: "350K", districts: 43, savings: "25%" },
+        arequipa: { name: "Arequipa", stores: 320, products: "85K", districts: 29, savings: "22%" },
+        cusco: { name: "Cusco", stores: 280, products: "75K", districts: 13, savings: "20%" },
+        trujillo: { name: "La Libertad (Trujillo)", stores: 250, products: "68K", districts: 12, savings: "23%" },
+        piura: { name: "Piura", stores: 180, products: "45K", districts: 8, savings: "21%" },
+        loreto: { name: "Loreto (Iquitos)", stores: 120, products: "32K", districts: 7, savings: "18%" },
+        lambayeque: { name: "Lambayeque (Chiclayo)", stores: 165, products: "42K", districts: 3, savings: "19%" },
+        cajamarca: { name: "Cajamarca", stores: 95, products: "28K", districts: 13, savings: "17%" },
+        junin: { name: "Junín (Huancayo)", stores: 140, products: "38K", districts: 9, savings: "20%" },
+        ancash: { name: "Áncash (Huaraz)", stores: 85, products: "24K", districts: 20, savings: "16%" },
+        huanuco: { name: "Huánuco", stores: 75, products: "22K", districts: 11, savings: "15%" },
+        san_martin: { name: "San Martín (Moyobamba)", stores: 90, products: "26K", districts: 10, savings: "18%" },
+        ica: { name: "Ica", stores: 110, products: "30K", districts: 5, savings: "19%" },
+        ayacucho: { name: "Ayacucho", stores: 65, products: "18K", districts: 11, savings: "14%" },
+        ucayali: { name: "Ucayali (Pucallpa)", stores: 80, products: "23K", districts: 4, savings: "16%" },
+        huancavelica: { name: "Huancavelica", stores: 45, products: "12K", districts: 7, savings: "13%" },
+        apurimac: { name: "Apurímac (Abancay)", stores: 50, products: "14K", districts: 7, savings: "14%" },
+        tacna: { name: "Tacna", stores: 95, products: "25K", districts: 4, savings: "18%" },
+        pasco: { name: "Pasco (Cerro de Pasco)", stores: 40, products: "11K", districts: 3, savings: "12%" },
+        tumbes: { name: "Tumbes", stores: 55, products: "15K", districts: 3, savings: "15%" },
+        amazonas: { name: "Amazonas (Chachapoyas)", stores: 35, products: "9K", districts: 7, savings: "11%" },
+        moquegua: { name: "Moquegua", stores: 60, products: "16K", districts: 3, savings: "16%" },
+        puno: { name: "Puno", stores: 105, products: "29K", districts: 15, savings: "17%" },
+        madre_de_dios: { name: "Madre de Dios (Puerto Maldonado)", stores: 30, products: "8K", districts: 3, savings: "11%" },
+        callao: { name: "Callao", stores: 150, products: "40K", districts: 5, savings: "21%" }
     };
 
     const searchInput = document.getElementById("search-input");
@@ -854,13 +700,11 @@
         alert("Aquí más adelante puedes mostrar un listado completo de tiendas o un buscador de tiendas. Por ahora es solo demo.");
     }
 
-    // Eventos
     searchButton.addEventListener("click", searchProducts);
     searchInput.addEventListener("keyup", (e) => {
         if (e.key === "Enter") searchProducts();
     });
 
-    // Estado inicial
     document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("hero-title").textContent = defaultConfig.hero_title;
         document.getElementById("hero-subtitle").textContent = defaultConfig.hero_subtitle;
